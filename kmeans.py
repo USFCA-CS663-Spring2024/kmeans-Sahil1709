@@ -17,7 +17,6 @@ class My_KMeans(cluster):
         
         for _ in range(self.max_iterations):
             # Assign each instance to the nearest centroid
-            # distances = np.linalg.norm(X[:, np.newaxis] - centroids, axis=2)
             distances = cdist(X, centroids)
             cluster_hypotheses = np.argmin(distances, axis=1)
 
@@ -40,10 +39,3 @@ class My_KMeans(cluster):
             centroids = new_centroids
         
         return cluster_hypotheses.tolist(), centroids.tolist()
-
-# testing the class
-# my_kmeans = My_KMeans(k=2, max_iterations=100, balanced=True)
-# X = [[0, 0], [2, 2], [0, 2], [2, 0], [10, 10], [8, 8], [10, 8], [8, 10]]
-# cluster_hypotheses, centroids = my_kmeans.fit(X)
-# print("Cluster hypotheses:", cluster_hypotheses)
-# print("Centroids:", centroids)
